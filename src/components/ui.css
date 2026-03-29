@@ -1,0 +1,240 @@
+/* ------------------
+   Card
+------------------ */
+.saas-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-3);
+  border: 1px solid var(--border-light);
+}
+
+.saas-card-header {
+  margin-bottom: var(--space-3);
+}
+
+.saas-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.01em;
+}
+
+.saas-card-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* ------------------
+   Button
+------------------ */
+.saas-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  outline: none;
+  font-family: inherit;
+}
+
+.saas-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(109, 76, 91, 0.2);
+}
+
+.saas-btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.saas-btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.saas-btn-secondary {
+  background-color: white;
+  color: var(--text-dark);
+  border-color: var(--border-light);
+}
+
+.saas-btn-secondary:hover:not(:disabled) {
+  background-color: var(--input-bg);
+  border-color: #D1D5DB;
+}
+
+.saas-btn-ghost {
+  background-color: transparent;
+  color: var(--text-muted);
+  border-color: transparent;
+}
+
+.saas-btn-ghost:hover:not(:disabled) {
+  background-color: var(--hover-overlay);
+  color: var(--text-dark);
+}
+
+.saas-btn-danger {
+  background-color: var(--error);
+  color: white;
+}
+
+.saas-btn-danger:hover:not(:disabled) {
+  background-color: #DC2626;
+}
+
+.saas-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ------------------
+   Input
+------------------ */
+.saas-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: var(--space-2);
+}
+
+.saas-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-label);
+}
+
+.saas-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.saas-input {
+  width: 100%;
+  padding: 9px 12px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--text-dark);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.saas-input.has-icon-left {
+  padding-left: 36px;
+}
+
+.saas-input::placeholder {
+  color: #9CA3AF;
+}
+
+.saas-input:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(109, 76, 91, 0.1);
+}
+
+.saas-input.error {
+  border-color: var(--error);
+}
+
+.saas-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.saas-icon-left {
+  position: absolute;
+  left: 11px;
+  color: var(--text-muted);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+}
+
+.saas-error-text {
+  font-size: 12px;
+  color: var(--error);
+}
+
+/* ------------------
+   Table
+------------------ */
+.saas-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  background: white;
+}
+
+.saas-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.saas-table th {
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border-light);
+  background-color: var(--input-bg);
+}
+
+.saas-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.saas-table tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+.saas-table tbody tr:hover {
+  background-color: var(--bg);
+}
+
+.saas-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ------------------
+   Badge
+------------------ */
+.saas-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.saas-badge-success {
+  background-color: #ECFDF5;
+  color: #065F46;
+}
+
+.saas-badge-warning {
+  background-color: #FFFBEB;
+  color: #92400E;
+}
+
+.saas-badge-neutral {
+  background-color: var(--border-light);
+  color: var(--text-muted);
+}
