@@ -30,14 +30,13 @@
 }
 
 .brand-logo {
-  width: 28px;
-  height: 28px;
-  background: var(--primary);
+  width: 32px;
+  height: 32px;
+  background: transparent;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   flex-shrink: 0;
 }
 
