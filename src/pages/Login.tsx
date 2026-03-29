@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { User, Users, Shield, Mail, Lock, Eye, EyeOff } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth, type Role } from '../context/AuthContext'
 import './Login.css'
-
-type Role = 'Employee' | 'Manager' | 'Admin'
 
 function Login() {
   const [role, setRole] = useState<Role>('Employee')
@@ -14,6 +13,7 @@ function Login() {
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
 
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
@@ -23,7 +23,12 @@ function Login() {
     if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return }
     setErrors({})
     setIsLoading(true)
-    setTimeout(() => { setIsLoading(false); navigate('/') }, 1500)
+    setTimeout(() => {
+      login(role, email.split('@')[0])
+      setIsLoading(false)
+      const dest = role === 'Manager' ? '/approvals' : role === 'Admin' ? '/admin' : '/expenses'
+      navigate(dest)
+    }, 1500)
   }
 
   return (

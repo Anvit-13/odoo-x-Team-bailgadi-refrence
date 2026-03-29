@@ -1,0 +1,489 @@
+/* ── Layout ─────────────────────────────────────────── */
+.emp-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  height: 100%;
+  min-height: 0;
+}
+
+/* ── Shared panel ───────────────────────────────────── */
+.emp-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* ── Panel toolbar ──────────────────────────────────── */
+.emp-toolbar {
+  display: flex;
+  gap: 10px;
+}
+
+/* ── Workflow card ──────────────────────────────────── */
+.workflow-card {
+  background: #1E1A2E;
+  border-radius: var(--radius-xl);
+  padding: 20px 24px;
+  border: 1px solid #2E2A40;
+}
+
+.workflow-card-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7C7A9A;
+  margin-bottom: 18px;
+}
+
+.workflow-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.workflow-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.workflow-stage-bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.workflow-stage-bubble.draft {
+  background: #2A2640;
+  border-color: #4A4668;
+  color: #9896B8;
+}
+
+.workflow-stage-bubble.waiting {
+  background: #2E2510;
+  border-color: #C9860A;
+  color: #F5A623;
+}
+
+.workflow-stage-bubble.approved {
+  background: #0D2318;
+  border-color: #1A7A45;
+  color: #34D399;
+}
+
+.workflow-stage-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #7C7A9A;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.workflow-stage-amount {
+  font-size: 13px;
+  font-weight: 700;
+  color: #E2E0F0;
+}
+
+.workflow-stage.waiting .workflow-stage-label { color: #F5A623; }
+.workflow-stage.approved .workflow-stage-label { color: #34D399; }
+.workflow-stage.waiting .workflow-stage-amount { color: #F5A623; }
+.workflow-stage.approved .workflow-stage-amount { color: #34D399; }
+
+.workflow-arrow {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 4px;
+  margin-bottom: 28px; /* align with bubble center */
+}
+
+.workflow-arrow-line {
+  width: 40px;
+  border-top: 2px dashed #3A3658;
+  position: relative;
+}
+
+.workflow-arrow-line::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: -5px;
+  border: 5px solid transparent;
+  border-left-color: #3A3658;
+}
+
+/* ── Expense Table card ─────────────────────────────── */
+.expense-table-card {
+  background: #1E1A2E;
+  border-radius: var(--radius-xl);
+  border: 1px solid #2E2A40;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.expense-table-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid #2E2A40;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expense-table-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #E2E0F0;
+  letter-spacing: 0.01em;
+}
+
+.expense-table-scroll {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.expense-table thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #5A5878;
+  background: #19162A;
+  border-bottom: 1px solid #2E2A40;
+  white-space: nowrap;
+}
+
+.expense-table tbody tr {
+  border-bottom: 1px solid #252238;
+  transition: background 0.12s;
+}
+
+.expense-table tbody tr:hover {
+  background: #252238;
+}
+
+.expense-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.expense-table td {
+  padding: 11px 14px;
+  color: #C8C6E0;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.expense-table td.desc-cell {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #E2E0F0;
+  font-weight: 500;
+}
+
+.expense-table td.amount-cell {
+  font-weight: 600;
+  color: #E2E0F0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Status badges — dark theme */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-badge .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-badge.draft {
+  background: transparent;
+  border: 1px solid #4A4668;
+  color: #9896B8;
+}
+.status-badge.draft .status-dot { background: #4A4668; }
+
+.status-badge.waiting {
+  background: #2E2510;
+  border: 1px solid #C9860A;
+  color: #F5A623;
+}
+.status-badge.waiting .status-dot { background: #F5A623; }
+
+.status-badge.approved {
+  background: #0D2318;
+  border: 1px solid #1A7A45;
+  color: #34D399;
+}
+.status-badge.approved .status-dot { background: #34D399; }
+
+.status-badge.rejected {
+  background: #2A0E0E;
+  border: 1px solid #7A1A1A;
+  color: #F87171;
+}
+.status-badge.rejected .status-dot { background: #F87171; }
+
+/* ── Right panel — Submission Form ──────────────────── */
+.form-panel {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+}
+
+.form-panel-header {
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.form-panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.01em;
+}
+
+.form-panel-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.form-panel-body {
+  padding: 18px 22px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Receipt attach button */
+.attach-receipt-btn {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px dashed var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--input-bg);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  font-family: inherit;
+}
+
+.attach-receipt-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.ocr-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: -8px;
+}
+
+/* Form field */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-label);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 8px 11px;
+  background: var(--input-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--text-dark);
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(109, 76, 91, 0.1);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #9CA3AF;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+/* Amount row with currency */
+.amount-row {
+  display: flex;
+  gap: 8px;
+}
+
+.amount-row .currency-select {
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.amount-row .amount-input {
+  flex: 1;
+}
+
+.currency-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding: 8px 10px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+}
+
+/* Approval info */
+.approval-info {
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.approval-info-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+
+.approval-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.approval-info-row span:first-child {
+  color: var(--text-muted);
+}
+
+.approval-info-row span:last-child {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* Submit button */
+.submit-expense-btn {
+  width: 100%;
+  padding: 11px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+
+.submit-expense-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* OCR overlay state */
+.ocr-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--primary);
+  padding: 6px 0;
+}
+
+.ocr-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(109, 76, 91, 0.2);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .emp-dashboard {
+    grid-template-columns: 1fr;
+  }
+  .form-panel {
+    max-height: none;
+  }
+}
